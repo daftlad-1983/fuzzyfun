@@ -290,15 +290,15 @@ The dataset is publicly available and contains high-quality measurements obtaine
 
 ### Model Performance
 
-| Metric | Score |
-|--------|-------|
+| Metric | Expected Score |
+|--------|----------------|
 | Accuracy | 85-90% |
 | Precision | 86-91% |
 | Recall | 84-89% |
 | F1-Score | 85-90% |
 | ROC AUC | 0.91-0.95 |
 
-*Note: Exact scores depend on train/test split and hyperparameters*
+*Note: These are expected performance ranges based on similar binary classification tasks with the raisin dataset. Actual results will depend on train/test split, hyperparameters, and implementation details.*
 
 ### Key Findings
 
