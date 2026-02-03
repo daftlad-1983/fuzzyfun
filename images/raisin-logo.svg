@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Raisin shape -->
+  <ellipse cx="100" cy="100" rx="70" ry="85" fill="#3d2516" opacity="0.9"/>
+  
+  <!-- Wrinkles/texture -->
+  <path d="M 60 80 Q 70 85 80 80" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 65 100 Q 75 105 85 100" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 70 120 Q 80 125 90 120" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 110 75 Q 120 80 130 75" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 115 95 Q 125 100 135 95" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 110 115 Q 120 120 130 115" stroke="#2a1810" stroke-width="2" fill="none" opacity="0.7"/>
+  
+  <!-- Highlight -->
+  <ellipse cx="85" cy="75" rx="15" ry="20" fill="#5d3926" opacity="0.5"/>
+  
+  <!-- Small indent at top (stem area) -->
+  <ellipse cx="100" cy="25" rx="8" ry="6" fill="#2a1810" opacity="0.8"/>
+</svg>
