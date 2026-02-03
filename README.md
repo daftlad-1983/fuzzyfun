@@ -1,0 +1,2 @@
+# fuzzyfun
+logistic regression challenge
