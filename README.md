@@ -27,14 +27,12 @@
 - [Docker Deployment](#docker-deployment)
 - [Dataset](#dataset)
 - [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
 ## 🎯 Overview
 
-This project demonstrates a complete machine learning pipeline for **raisin classification**. The implementation uses pure NumPy (no scikit-learn) to build a logistic regression classifier from scratch, providing deep insights into the mathematical foundations of machine learning.
+This project demonstrates a complete machine learning pipeline for **raisin classification**. The implementation uses pure NumPy (no scikit-learn) to build a logistic regression classifier from scratch.
 
 The project includes:
 - ✅ Custom logistic regression implementation using only NumPy
@@ -57,7 +55,7 @@ The project includes:
 - Data exploration and visualization
 - Step-by-step model training
 - Performance metrics and evaluation
-- Confusion matrix and ROC curves
+- Confusion matrix
 
 ### 🚀 Production-Ready API
 - FastAPI-based REST endpoints
@@ -150,10 +148,10 @@ jupyter notebook notebooks/logistic_regression.ipynb
 
 The notebook covers:
 1. **Data Loading & Exploration** - Understanding the raisin dataset
-2. **Feature Engineering** - Preparing features for classification
+2. **Data Prep** - Preparing features for classification
 3. **Model Implementation** - Building logistic regression from scratch
 4. **Training** - Gradient descent optimization
-5. **Evaluation** - Metrics, confusion matrix, ROC curve
+5. **Evaluation** - confusion matrix
 6. **SHAP Analysis** - Interpreting model predictions
 
 ### API Deployment
@@ -256,13 +254,6 @@ docker-compose up
 
 The API will be available at `http://localhost:8000`
 
-### Dockerfile Highlights
-
-- Multi-stage build for optimal image size
-- Non-root user for security
-- Health check configuration
-- Efficient layer caching
-
 ---
 
 ## 📊 Dataset
@@ -308,35 +299,8 @@ The dataset is publicly available and contains high-quality measurements obtaine
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- Dataset source: UCI Machine Learning Repository
-- SHAP library for model explainability
-- FastAPI framework for the REST API
-- NumPy community for numerical computing tools
-
----
 
 <div align="center">
-  Made with ❤️ for machine learning education and exploration
-  
-  ⭐ Star this repo if you find it helpful!
+
 </div>
