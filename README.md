@@ -79,30 +79,15 @@ The project includes:
 ```
 fuzzyfun/
 ├── images/                    # Images and assets for README
-│   └── raisin-logo.svg       # Project logo
-├── notebooks/                 # Jupyter notebooks
-│   └── logistic_regression.ipynb  # Main analysis notebook
-├── src/                       # Source code
-│   ├── model.py              # Logistic regression implementation
-│   ├── preprocessing.py      # Data preprocessing utilities
-│   └── explainability.py     # SHAP analysis functions
-├── api/                       # FastAPI application
-│   ├── main.py               # API entry point
-│   ├── models.py             # Pydantic models
-│   └── predict.py            # Prediction logic
-├── data/                      # Dataset directory
-│   └── raisin_dataset.csv    # Raisin classification dataset
-├── models/                    # Saved model artifacts
-│   └── logistic_model.pkl    # Trained model
-├── tests/                     # Unit tests
-│   └── test_model.py         # Model tests
 ├── Dockerfile                 # Docker configuration
-├── docker-compose.yml         # Docker Compose configuration
-├── requirements.txt           # Python dependencies
 ├── README.md                  # This file
+├── logistic.py                # Class for the logistic regression. Also in the notebook
+├── logreg.ipynb               # Jupyter notebook for the model / testing of API and SHAP analysis
+├── main.py                    # The  FastAPI app
+├── raisin_model.json          # The serialized model settings for loading
+├── requirements.txt           # Python dependencies
 └── .gitignore                # Git ignore rules
 ```
-
 ---
 
 ## 🔧 Installation
@@ -161,7 +146,7 @@ Start the FastAPI server:
 fastapi run main.py --port 80 
 ```
 
-Access the interactive API documentation at `http://localhost:8000/docs`
+Access the interactive API documentation at `http://localhost:80/docs`
 
 #### Example API Request
 
@@ -204,12 +189,6 @@ docker build -t raisin-classifier .
 docker run -d --name raisins -p 80:80 raisinsim raisin-classifier
 ```
 
-### Using Docker Compose
-
-```bash
-docker-compose up
-```
-
 The API will be available at `http://localhost:80`
 
 ---
@@ -243,7 +222,7 @@ Confusion matrix with the customer classifier
 
 <img src="images/cusom cm.png" alt="cm1" width="500"/>
 
-Confusion matrix with the sklearn classifier
+Confusion matrix with the sklearn classifier for comparison
 
 <img src="images/sk cm.png" alt="cm2" width="500"/>
 
