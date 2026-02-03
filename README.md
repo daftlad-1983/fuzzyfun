@@ -53,21 +53,18 @@ The project includes:
 
 ### 📊 Interactive Notebook
 - Data exploration and visualization
-- Step-by-step model training
 - Performance metrics and evaluation
 - Confusion matrix
 
 ### 🚀 Production-Ready API
 - FastAPI-based REST endpoints
 - Input validation with Pydantic
-- Health check endpoints
 - Prediction endpoint with probability scores
 
 ### 🐳 Docker Support
-- Multi-stage Docker build
+- Docker build
 - Optimized image size
 - Easy deployment to any cloud platform
-- Docker Compose support
 
 ### 🔍 Model Explainability
 - SHAP (SHapley Additive exPlanations) analysis
@@ -161,7 +158,7 @@ The notebook covers:
 Start the FastAPI server:
 
 ```bash
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+fastapi run main.py --port 80 
 ```
 
 Access the interactive API documentation at `http://localhost:8000/docs`
@@ -172,12 +169,19 @@ Access the interactive API documentation at `http://localhost:8000/docs`
 
 import requests
 
-data_dict = x_df.to_dict(orient='list')
+body = {'Area': [87524, 75166],
+ 'MajorAxisLength': [442.2460114, 406.690687],
+ 'MinorAxisLength': [253.291155, 243.0324363],
+ 'Eccentricity': [0.819738392, 0.801805234],
+ 'ConvexArea': [90546, 78789],
+ 'Extent': [0.758650579, 0.68412957],
+ 'Perimeter': [1184.04, 1121.786]}
+ 
+response = requests.post("http://127.0.0.1/predict/", json=body).json()
 
-response = requests.post("http://127.0.0.1/predict/", json=data_dict).json()
-
-print('\nConfusion matrix\n')
-print(confusion_matrix(y_numpy , np.array(response['predictions'])>0.5, normalize='true' ))
+{'predictions': [[0.35195471524102434], [0.5189776433759058]],
+'q_values': [[-0.007186368228293334, 0.09757694726280954, -0.023958186812480693, 0.4231416366814646, -0.015709027557133555, 1.1067426378437466, 0.06627396602471022],
+ [-0.3242171863419545, -0.2090120720145583, -0.2292922188022519, 0.22447639014727822, -0.3042481970320827, -0.28777679036133497, -0.1612524532199187]]}
 
 ```
 
@@ -197,7 +201,7 @@ docker build -t raisin-classifier .
 ### Run the Container
 
 ```bash
-docker run -p 8000:8000 raisin-classifier
+docker run -d --name raisins -p 80:80 raisinsim raisin-classifier
 ```
 
 ### Using Docker Compose
@@ -206,7 +210,7 @@ docker run -p 8000:8000 raisin-classifier
 docker-compose up
 ```
 
-The API will be available at `http://localhost:8000`
+The API will be available at `http://localhost:80`
 
 ---
 
