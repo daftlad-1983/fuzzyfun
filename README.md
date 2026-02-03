@@ -143,7 +143,7 @@ fuzzyfun/
 The interactive notebook provides a complete walkthrough of the logistic regression implementation:
 
 ```bash
-jupyter notebook notebooks/logistic_regression.ipynb
+jupyter notebook notebooks/logreg.ipynb
 ```
 
 The notebook covers:
@@ -169,68 +169,22 @@ Access the interactive API documentation at `http://localhost:8000/docs`
 #### Example API Request
 
 ```python
+
 import requests
 
-# Prediction endpoint
-response = requests.post(
-    "http://localhost:8000/predict",
-    json={
-        "features": {
-            "area": 87524,
-            "perimeter": 1184.04,
-            "major_axis": 531.85,
-            "minor_axis": 213.56,
-            "eccentricity": 0.916,
-            "convex_area": 90546,
-            "extent": 0.738
-        }
-    }
-)
+data_dict = x_df.to_dict(orient='list')
 
-result = response.json()
-print(f"Prediction: {result['prediction']}")
-print(f"Probability: {result['probability']:.2%}")
+response = requests.post("http://127.0.0.1/predict/", json=data_dict).json()
+
+print('\nConfusion matrix\n')
+print(confusion_matrix(y_numpy , np.array(response['predictions'])>0.5, normalize='true' ))
+
 ```
 
 #### Available Endpoints
 
 - `GET /` - Welcome message
-- `GET /health` - Health check endpoint
 - `POST /predict` - Make predictions
-- `GET /model/info` - Get model information
-- `GET /docs` - Interactive API documentation
-
----
-
-## 🔍 Model Explainability
-
-This project uses **SHAP (SHapley Additive exPlanations)** to explain model predictions:
-
-### Feature Importance
-```python
-import shap
-from src.explainability import get_shap_values
-
-# Generate SHAP values
-explainer = shap.Explainer(model.predict_proba, X_train)
-shap_values = explainer(X_test)
-
-# Visualize feature importance
-shap.summary_plot(shap_values, X_test, feature_names=feature_names)
-```
-
-### Individual Predictions
-```python
-# Explain a single prediction
-shap.waterfall_plot(shap_values[0])
-```
-
-SHAP helps answer:
-- 🎯 Which features most influence the model's decisions?
-- 📊 How does each feature contribute to a specific prediction?
-- 🔄 Are there any unexpected feature interactions?
-
----
 
 ## 🐳 Docker Deployment
 
@@ -281,21 +235,39 @@ The dataset is publicly available and contains high-quality measurements obtaine
 
 ### Model Performance
 
-| Metric | Expected Score |
-|--------|----------------|
-| Accuracy | 85-90% |
-| Precision | 86-91% |
-| Recall | 84-89% |
-| F1-Score | 85-90% |
-| ROC AUC | 0.91-0.95 |
+Confusion matrix with the customer classifier
 
-*Note: These are expected performance ranges based on similar binary classification tasks with the raisin dataset. Actual results will depend on train/test split, hyperparameters, and implementation details.*
+<img src="images/cusom cm.png" alt="cm1" width="500"/>
+
+Confusion matrix with the sklearn classifier
+
+<img src="images/sk cm.png" alt="cm2" width="500"/>
+
+
+---
+
+## 🔍 Model Explainability
+
+This project uses **SHAP (SHapley Additive exPlanations)** to explain model predictions:
+
+SHAP helps answer:
+- 🎯 Which features most influence the model's decisions?
+- 📊 How does each feature contribute to a specific prediction?
+
+### Feature Importance
+
+As we can see, perimeter is  the most important feature. So the lower the perimeter, the more likely it is to be 
+class 1, kecimin
+
+<img src="images/shap.png" alt="shap graph" width="600"/>
+
+---
 
 ### Key Findings
 
-- 🎯 **Most Important Features**: Eccentricity and Major Axis Length are the strongest predictors
-- 📊 **Model Complexity**: Logistic regression provides a good balance between interpretability and performance
-- ⚡ **Inference Speed**: Predictions take <1ms on average
+- 🎯 **Most Important Features**: Perimeter strongest predictor
+- 📊 **Model Complexity**: My GD version of the model works ok
+- ⚡ **API deployment**: works ok. Could be deployed on ECS aws for scaling
 
 ---
 
