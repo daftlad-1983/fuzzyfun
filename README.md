@@ -32,7 +32,9 @@
 
 ## 🎯 Overview
 
-This project demonstrates a complete machine learning pipeline for **raisin classification**. The implementation uses pure NumPy (no scikit-learn) to build a logistic regression classifier from scratch.
+This project demonstrates construction of a logistic regression from first principles for **raisin classification**. The implementation uses pure NumPy (no scikit-learn) to build a logistic regression classifier from scratch.
+
+- Of note, I haven't focussed on hyper-parameter tuning or model validation e.g. train/test split. The main focus was to build a model class with similar functionality to the SKlearn implementation.
 
 The project includes:
 - ✅ Custom logistic regression implementation using only NumPy
@@ -47,8 +49,7 @@ The project includes:
 
 ### 🧮 Pure NumPy Implementation
 - Custom gradient descent optimizer
-- Binary cross-entropy loss function
-- Sigmoid activation
+- L2 regularization
 - No ML framework dependencies (except for SHAP analysis)
 
 ### 📊 Interactive Notebook
@@ -56,7 +57,7 @@ The project includes:
 - Performance metrics and evaluation
 - Confusion matrix
 
-### 🚀 Production-Ready API
+### 🚀 A Nice API
 - FastAPI-based REST endpoints
 - Input validation with Pydantic
 - Prediction endpoint with probability scores
@@ -217,6 +218,8 @@ The dataset is publicly available and contains high-quality measurements obtaine
 ## 📈 Results
 
 ### Model Performance
+
+As we can see, the custom model and SK model have identical performance.
 
 Confusion matrix with the customer classifier
 
