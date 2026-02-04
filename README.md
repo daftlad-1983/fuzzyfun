@@ -86,8 +86,9 @@ fuzzyfun/
 ├── logreg.ipynb               # Jupyter notebook for the model / testing of API and SHAP analysis
 ├── main.py                    # The  FastAPI app
 ├── raisin_model.json          # The serialized model settings for loading
-├── requirements.txt           # Python dependencies
-└── .gitignore                # Git ignore rules
+├── requirements.txt           # Python dependencies for API
+├── requirements_jupyter.txt   # Python dependencies for jupyter notebook
+└── .gitignore                 # Git ignore rules
 ```
 ---
 
@@ -113,10 +114,14 @@ fuzzyfun/
    ```
 
 3. **Install dependencies**
+4. For API
    ```bash
    pip install -r requirements.txt
    ```
-
+   For jupyter notebook
+   ```bash
+   pip install -r requirements_jupyter.txt
+   ```
 ---
 
 ## 🚀 Usage
