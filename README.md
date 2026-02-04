@@ -186,7 +186,7 @@ docker build -t raisin-classifier .
 ### Run the Container
 
 ```bash
-docker run -d --name raisins -p 80:80 raisinsim raisin-classifier
+docker run -d --name raisins -p 80:80 raisin-classifier
 ```
 
 The API will be available at `http://localhost:80`
