@@ -1,7 +1,7 @@
 <div align="center">
   <img src="images/raisin-logo.svg" alt="Raisin Logo" width="150"/>
   
-  # 🍇 Raisin Classification with Logistic Regression
+  # 🍇 Raisin awareness of currant affairs
   
   A machine learning project for classifying raisins using logistic regression implemented from scratch with NumPy
   
